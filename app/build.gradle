@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 32
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        multiDexEnabled true
+        applicationId "com.fluidsimulator"
+        minSdk 14
+        targetSdk 32
+    }
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation files('src/main/jniLibs/gdx.jar')
+    implementation files('src/main/jniLibs/gdx-backend-lwjgl.jar')
+    implementation files('src/main/jniLibs/gdx-backend-android.jar')
+    implementation files('src/main/jniLibs/gdx-backend-lwjgl-natives.jar')
+    implementation files('src/main/jniLibs/gdx-natives.jar')
+    implementation files('src/main/jniLibs/javolution-5.5.1.jar')
+}
